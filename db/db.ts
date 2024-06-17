@@ -2,6 +2,7 @@ import sqlite3 from 'sqlite3';
 import path from 'path';
 import userDB from './userDB';
 import zayavkiDB from './zayavkiDB';
+import bookingsDB from './bookingsDB';
 require('dotenv').config(path.resolve(__dirname, '../.env'));
 
 export const pool = new sqlite3.Database('../db.db', (err) => {
@@ -14,6 +15,8 @@ export const pool = new sqlite3.Database('../db.db', (err) => {
 export const createTablesAsync = async () => {
     await userDB.createUsersTable();
     await zayavkiDB.createZayavkiTable();
+    await console.log('creating Bookings table')
+    await bookingsDB.createBookingsTable();
 }
 
 export const createTables = () => {
